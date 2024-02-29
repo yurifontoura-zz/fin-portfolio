@@ -14,10 +14,9 @@ namespace CreditSuisse.FinPort.Domain.Entities
         }
 
         private decimal _marketValue;
-        private string _type;
+        private readonly string _type;
 
         public decimal MarketValue => _marketValue;
-
         public string Type => _type;
     }
 }

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CreditSuisse.FinPort.Application.Interface\CreditSuisse.FinPort.Application.Interface.csproj" />
     <ProjectReference Include="..\CreditSuisse.FinPort.Domain\CreditSuisse.FinPort.Domain.csproj" />
   </ItemGroup>
 

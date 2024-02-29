@@ -13,8 +13,4 @@
     <ProjectReference Include="..\CreditSuisse.FinPort.Repository.MS\CreditSuisse.FinPort.Repository.MS.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Injections\" />
-  </ItemGroup>
-
 </Project>
