@@ -10,11 +10,6 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["CreditSuisse.FinPort.Api/CreditSuisse.FinPort.Api.csproj", "CreditSuisse.FinPort.Api/"]
-COPY ["CreditSuisse.FinPort.Application.Interface/CreditSuisse.FinPort.Application.Interface.csproj", "CreditSuisse.FinPort.Application.Interface/"]
-COPY ["CreditSuisse.FinPort.CrossDomain/CreditSuisse.FinPort.CrossDomain.csproj", "CreditSuisse.FinPort.CrossDomain/"]
-COPY ["CreditSuisse.FinPort.Application/CreditSuisse.FinPort.Application.csproj", "CreditSuisse.FinPort.Application/"]
-COPY ["CreditSuisse.FinPort.Domain/CreditSuisse.FinPort.Domain.csproj", "CreditSuisse.FinPort.Domain/"]
-COPY ["CreditSuisse.FinPort.Repository.MS/CreditSuisse.FinPort.Repository.MS.csproj", "CreditSuisse.FinPort.Repository.MS/"]
 RUN dotnet restore "./CreditSuisse.FinPort.Api/./CreditSuisse.FinPort.Api.csproj"
 COPY . .
 WORKDIR "/src/CreditSuisse.FinPort.Api"

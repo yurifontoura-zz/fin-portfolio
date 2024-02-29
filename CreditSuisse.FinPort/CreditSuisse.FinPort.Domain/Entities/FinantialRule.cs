@@ -26,5 +26,11 @@ namespace CreditSuisse.FinPort.Domain.Entities
         /// <param name="instrument">An object that implements IFinantialInstrument interface, which will have it's content validated.</param>
         /// <returns>True if attends the rule, or false if it does not.</returns>
         public bool Applies(IFinantialInstrument instrument) => _selector.Invoke(instrument);
+
+        /// <summary>
+        /// Method responsible for validate the rule.
+        /// </summary>
+        /// <returns>True if all the instruments attends the rule, or false if even one does not.</returns>
+        public Task<bool> Applies(IEnumerable<IFinantialInstrument> instruments) => Task.Run(() => instruments.ToList().TrueForAll(i => Applies(i)));
     }
 }
