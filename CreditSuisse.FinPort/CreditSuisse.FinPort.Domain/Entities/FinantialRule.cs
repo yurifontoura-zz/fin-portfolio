@@ -20,6 +20,11 @@ namespace CreditSuisse.FinPort.Domain.Entities
         public string Name { get; init; }
         private Func<IFinantialInstrument, bool> _selector { get; set; }
 
+        /// <summary>
+        /// Method responsible for validate the rule.
+        /// </summary>
+        /// <param name="instrument">An object that implements IFinantialInstrument interface, which will have it's content validated.</param>
+        /// <returns>True if attends the rule, or false if it does not.</returns>
         public bool Applies(IFinantialInstrument instrument) => _selector.Invoke(instrument);
     }
 }
