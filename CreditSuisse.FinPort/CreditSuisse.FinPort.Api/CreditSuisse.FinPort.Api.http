@@ -1,0 +1,6 @@
+@CreditSuisse.FinPort.Api_HostAddress = http://localhost:5150
+
+GET {{CreditSuisse.FinPort.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

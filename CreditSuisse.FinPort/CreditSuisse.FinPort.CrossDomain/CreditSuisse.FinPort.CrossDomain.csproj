@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CreditSuisse.FinPort.Application.Interface\CreditSuisse.FinPort.Application.Interface.csproj" />
+    <ProjectReference Include="..\CreditSuisse.FinPort.Application\CreditSuisse.FinPort.Application.csproj" />
+    <ProjectReference Include="..\CreditSuisse.FinPort.Domain\CreditSuisse.FinPort.Domain.csproj" />
+    <ProjectReference Include="..\CreditSuisse.FinPort.Repository.MS\CreditSuisse.FinPort.Repository.MS.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Injections\" />
+  </ItemGroup>
+
+</Project>
