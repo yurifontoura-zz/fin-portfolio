@@ -1,9 +1,5 @@
 ﻿using CreditSuisse.FinPort.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CreditSuisse.FinPort.Domain.Interfaces;
 
 namespace CreditSuisse.FinPort.Domain.Tests.Tests
 {
@@ -13,7 +9,7 @@ namespace CreditSuisse.FinPort.Domain.Tests.Tests
         public void FinantialRule_Applies_Success()
         {
             // Arrange
-            FinantialRule rule = new("Medium", 1000000, 5000000);
+            FinantialRule rule = new BasicRule("Medium", 1000000, 5000000);
             FinantialInstrument instrument = new(3000000, "Derivative");
 
             // Act
@@ -27,7 +23,7 @@ namespace CreditSuisse.FinPort.Domain.Tests.Tests
         public void FinantialRule_Applies_Fail()
         {
             // Arrange
-            FinantialRule rule = new("Medium", 1000000, 5000000);
+            FinantialRule rule = new BasicRule("Medium", 1000000, 5000000);
             FinantialInstrument instrument = new(8000000, "Derivative");
 
             // Act
@@ -41,7 +37,7 @@ namespace CreditSuisse.FinPort.Domain.Tests.Tests
         public async Task FinantialRule_ListApplies_Success()
         {
             // Arrange
-            FinantialRule rule = new("Medium", 1000000, 5000000);
+            FinantialRule rule = new BasicRule("Medium", 1000000, 5000000);
             List<FinantialInstrument> instruments =
                 [
                     new(3000000, "Derivative"),
@@ -61,7 +57,7 @@ namespace CreditSuisse.FinPort.Domain.Tests.Tests
         public async Task FinantialRule_ListApplies_Fail()
         {
             // Arrange
-            FinantialRule rule = new("Medium", 1000000, 5000000);
+            FinantialRule rule = new BasicRule("Medium", 1000000, 5000000);
             List<FinantialInstrument> instruments =
                 [
                     new(3000000, "Derivative"),
@@ -75,6 +71,30 @@ namespace CreditSuisse.FinPort.Domain.Tests.Tests
 
             // Assert
             Assert.False(applies);
+        }
+
+        [Fact]
+        public async Task FinantialRule_Filter_Success()
+        {
+            // Arrange
+            FinantialRule rule = new BasicRule("Medium", 1000000, 5000000);
+            List<FinantialInstrument> instruments =
+                [
+                    new(3000000, "Passed"),
+                    new(5000000, "Passed 2"),
+                    new(1000000, "Passed 3"),
+                    new(8000000, "Not Passed"),
+                    new(930500, "Not Passed 2"),
+                    new(2000, "Not Passed 3"),
+                    new(2503040, "Passed 4")
+                ];
+
+            // Act
+            List<IFinantialInstrument> filtered = await rule.Filter(instruments);
+
+            // Assert
+            Assert.Equal(4, filtered.Count);
+            Assert.DoesNotContain(filtered, a => a.Type.Contains("Not"));
         }
     }
 }
