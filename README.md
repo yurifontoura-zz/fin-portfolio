@@ -11,6 +11,10 @@ Question 1. Categorizing Financial Instruments in a Portfolio
 ]
 
 # Project architecture
+This project intend to follow the SOLID principles and hexagonal architecture.\n
+Some principles, as the Dependency Inversion can be validated on the FinantialRule and FinantialInstrument relationship.\n
+The application layer, can be used by any facade we decide to create. For this challenge purpose, an Api with Swagger was used.\n
+But, we can also include or replace by any other, such as Worker, Windows Services, Lambda function, Console application and such thing.\n
 
 ## CrossDomain
 This layer is for carrying out the pluggable libs and solve dependencies, in intention of decouple the dependency of the project. \n
