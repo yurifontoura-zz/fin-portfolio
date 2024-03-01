@@ -21,6 +21,9 @@ namespace CreditSuisse.FinPort.Domain.Entities
         }
 
         public string Name { get; init; }
+        /// <summary>
+        /// The Selector may hold the criteria of the rule, that any object that implements IFinantialInstrument can be applied or not.
+        /// </summary>
         private Func<IFinantialInstrument, bool> _selector { get; set; }
 
         /// <summary>
